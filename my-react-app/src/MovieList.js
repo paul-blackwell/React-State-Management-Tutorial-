@@ -1,31 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Movie from './Movie';
 
-const MovieList = () => {
+import { MovieContext } from './MovieContext';
 
-    const [movies, setMovies] = useState([
-        {
-            name: 'Harry Potter',
-            price: '$10',
-            id: 23124
-        },
-        {
-            name: 'Game of Thrones',
-            price: '$10',
-            id: 2566124
-        },
-        {
-            name: 'Inception',
-            price: '$10',
-            id: 23524
-        },
-    ]);
+const MovieList = () => {
+    const value = useContext(MovieContext)
 
     return (
         <div>
-            {movies.map(movie => (
+            <h1>{value}</h1>
+            {/* {movies.map(movie => (
                <Movie name={movie.name} price={movie.price} key={movie.id}/>
-            ))}
+            ))} */}
         </div>
     )
 }

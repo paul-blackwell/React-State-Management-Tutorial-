@@ -2,12 +2,16 @@ import './App.css';
 import Nav from './Nav';
 import MovieList from './MovieList'
 
+import { MovieProvider } from './MovieContext';
+
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <MovieList />
-    </div>
+    <MovieProvider>
+      <div className="App">
+        <Nav />
+        <MovieList />
+      </div>
+    </MovieProvider>
   );
 }
 
