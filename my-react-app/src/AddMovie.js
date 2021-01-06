@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
-import { MovieContext } from './MovieContext';
+import { DispatchContext } from "./context/movie.context";
 
 
 const AddMovie = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
-    const [movies, setMovies] = useContext(MovieContext);
+    const dispatch  = useContext(DispatchContext);
 
     const updateName = (e) => {
         setName(e.target.value);
@@ -18,7 +18,8 @@ const AddMovie = () => {
 
     const addMovie = (e) => {
         e.preventDefault();
-        setMovies(previousMovies => [...previousMovies, { name: name, price: price, id: uuid() }])
+        //setMovies(previousMovies => [...previousMovies, { name: name, price: price, id: uuid() }])
+        dispatch({ type: "ADD", name: name, price: price, id: uuid() });
     }
 
 

@@ -3,7 +3,7 @@ import Nav from './Nav';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-import { MovieProvider } from './MovieContext';
+import { MovieProvider } from './context/movie.context';
 
 function App() {
   return (
