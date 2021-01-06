@@ -1,9 +1,7 @@
-import React, { useState,createContext } from 'react';
+import React, {useReducer, createContext } from 'react';
 import movieReducer from '../reducers/movie.reducer';
 
 export const MovieContext = createContext();
-export const DispatchContext = createContext();
-
 
 const defaultMovies = [
     {
@@ -26,13 +24,11 @@ const defaultMovies = [
 
 
 export const MovieProvider = (props) => {
-    const [movies, dispatch] = useState(defaultMovies, movieReducer);
-
+    const [movies, dispatch] = useReducer(movieReducer, defaultMovies);
+    
     return (
-        <MovieContext.Provider value={movies}>
-            <DispatchContext.Provider value={dispatch}>
-                {props.children}
-            </DispatchContext.Provider>
+        <MovieContext.Provider value={{movies, dispatch}}>
+            {props.children}
         </MovieContext.Provider>
     );
 }
